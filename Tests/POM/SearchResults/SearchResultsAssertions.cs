@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium;
-using Tests.POM.Base;
+﻿using Tests.POM.Base;
 
 namespace Tests.POM.SearchResults
 {
