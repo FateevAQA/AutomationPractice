@@ -1,7 +1,7 @@
 ﻿using BoDi;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using TechTalk.SpecFlow;
 
 namespace Tests.Drivers
 {
@@ -23,7 +23,7 @@ namespace Tests.Drivers
             _chromeOptions.AddArguments(new[] {
                 "--start-maximized",
                 "--ignore-certificate-errors",
-             // "--disable-popup-blocking",
+                "--disable-popup-blocking",
                 "--no-sandbox",
              // "--headless",
                 "--disable-dev-shm-usage" });
