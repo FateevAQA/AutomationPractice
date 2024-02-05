@@ -29,7 +29,8 @@ namespace Tests.POM.SearchResults
         {
             var totalNumberOfShownItems = GetElements(allResultsShownLocator).Count();
 
-            _searchAssertions.AreEqual(expectedNumberOfShownItems, totalNumberOfShownItems, "Total number of shown search results items was incorrect");
+            _searchAssertions.AreEqual(expectedNumberOfShownItems, totalNumberOfShownItems, 
+                "Total number of shown search results items was incorrect");
         }
     }
 }
