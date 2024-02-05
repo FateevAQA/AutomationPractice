@@ -35,10 +35,7 @@ namespace Tests.Drivers
         [AfterScenario]
         public void AfterScenario()
         {
-            if (_driver != null)
-            {
-                _driver.Quit();
-            }
+            _driver.Quit();
         }
     }
 }
