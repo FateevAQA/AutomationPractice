@@ -5,7 +5,7 @@ Search for product and verify results
 Background:
 	Given I open AutomationPractice site
 
-Scenario: Verify total number of the search results is shown correctly
+Scenario Outline: Verify total number of the search results is shown correctly
 	When I search for '<searchText>'
 	Then I see that total number of shown results is '<numberOfResults>'
 
