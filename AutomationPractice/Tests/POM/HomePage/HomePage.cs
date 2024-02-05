@@ -60,11 +60,11 @@ namespace Tests.POM.HomePage
                 $"One or more subcategories names for '{categoryName}' category were incorrect.");
         }
 
-        public void VerifySubCategoryTitles(string categoryName, List<string> expectedSubCategoriesNames)
+        public void VerifySubCategoryTitles(string categoryName, List<string> expectedSubCategoryTitles)
         {
             var actualSubCategoriesTitles = GetAllTexts(AllSubcategoryTitlesForCategory(categoryName));
            
-            _homeAssertions.AreEqual(expectedSubCategoriesNames, actualSubCategoriesTitles,
+            _homeAssertions.AreEqual(expectedSubCategoryTitles, actualSubCategoriesTitles,
                 $"One or more subcategories names for '{categoryName}' category were incorrect.");
         }
     }
