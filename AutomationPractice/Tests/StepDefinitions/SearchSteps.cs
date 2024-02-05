@@ -17,22 +17,18 @@ namespace Tests.StepDefinitions
         }
 
         [Given(@"I open AutomationPractice site")]
-        public void GivenIOpenAutomationpracticeSite()
-        {
-            _homePage.NavigateToBasePage();
-        }
+        public void GivenIOpenAutomationpracticeSite() =>
+            _homePage.NavigateToHomePage();
+
+        [Then(@"Results page have '([^']*)' results")]
+        public void ThenResultsPageHaveResults(string expectedNumberOfResults) =>
+            _searchPage.VerifyNumberOfTotalResultsFound(expectedNumberOfResults);
 
         [When(@"I search for '([^']*)'")]
         public void WhenISearchFor(string searchtext)
         {
             _homePage.SendTextToSearchInput(searchtext);
             _homePage.ClickOnSearchButton();
-        }
-
-        [Then(@"Results page have '([^']*)' results")]
-        public void ThenResultsPageHaveResults(string expectedNumberOfResults)
-        {
-            _searchPage.VerifyNumberOfTotalResultsFound(expectedNumberOfResults);
         }
 
         [Then(@"I see that total number of shown results is '([^']*)'")]
