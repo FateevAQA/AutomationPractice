@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
@@ -31,5 +32,28 @@ namespace Tests.Helpers
         {
             _wait.Timeout = TimeSpan.FromSeconds(timeout);
         }
+        public void WaitForJavaScriptToLoad(int delay = 10)
+        {
+                var jsDriver = (IJavaScriptExecutor)_webDriver;
+
+                while (delay > 0)
+                {
+                    Thread.Sleep(300);
+                    var jquery = (bool)jsDriver
+                        .ExecuteScript("return window.jQuery == undefined");
+                    if (jquery)
+                    {
+                        break;
+                    }
+                    var ajaxIsComplete = (bool)jsDriver
+                        .ExecuteScript("return window.jQuery.active == 0");
+                    if (ajaxIsComplete)
+                    {
+                        break;
+                    }
+                    delay--;     
+            }
+        }
+
     }
 }
