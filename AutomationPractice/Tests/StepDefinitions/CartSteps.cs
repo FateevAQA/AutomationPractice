@@ -14,10 +14,8 @@ namespace Tests.StepDefinitions
         }
 
         [Then(@"I see correct summary about added products")]
-        public void ThenISeeCorrectSummaryAboutAddedProductsDontForgetToCountTotalls(Table expectedProductsDetails)
-        {
+        public void ThenISeeCorrectSummaryAboutAddedProductsDontForgetToCountTotalls(Table expectedProductsDetails) =>
             _cartPage.VerifyProductDetailsInTheCart(expectedProductsDetails);
-        }
 
     }
 }
