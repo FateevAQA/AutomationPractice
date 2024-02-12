@@ -20,13 +20,17 @@ namespace Tests.POM.Base
 
         public string GetText(By elementLocator)
         {
-            _wait.WaitForElement(elementLocator);
-            return _driver.FindElement(elementLocator).Text;
+            return GetElement(elementLocator).Text;
         }
 
         public List<string> GetAllTexts(By elementsLocator)
         {
             return GetElements(elementsLocator).Select(element => element.Text).ToList();
+        }
+
+        public List<string> GetAllValues(By elementsLocator)
+        {
+            return GetElements(elementsLocator).Select(element => element.GetAttribute("value")).ToList();
         }
 
         public List<string>? GetAllTextsWithoutWait(By elementsLocator)
@@ -36,8 +40,8 @@ namespace Tests.POM.Base
 
         public void SendKeys(By elementLocator, string textToSend)
         {
-            _wait.WaitForElement(elementLocator);
-            _driver.FindElement(elementLocator).SendKeys(textToSend);
+            GetElement(elementLocator).Clear();
+            GetElement(elementLocator).SendKeys(textToSend);
         }
 
         public void NavigateToURL(string url)
@@ -47,8 +51,8 @@ namespace Tests.POM.Base
 
         public void ClickElement(By elementLocator)
         {
-            _wait.WaitForElement(elementLocator);
-            _driver.FindElement(elementLocator).Click();
+            GetElement(elementLocator).Click();
+            _wait.WaitForJavaScriptToLoad();
         }
 
         public IWebElement GetElement(By elementLocator)
@@ -71,6 +75,16 @@ namespace Tests.POM.Base
         public void HoverElement(By elementLocator)
         {
             _actions.MoveToElement(GetElement(elementLocator)).Perform();
+        }
+
+        public void SwitchToFrame(By frameLocator)
+        {
+            _driver.SwitchTo().Frame(GetElement(frameLocator));
+        }
+
+        public void SwitchToDefaultFrame()
+        {
+            _driver.SwitchTo().DefaultContent();
         }
     }
 }
