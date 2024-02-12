@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System.Collections.ObjectModel;
-using System.Reflection.Metadata;
 using Tests.Helpers;
 
 namespace Tests.POM.Base
@@ -27,6 +26,11 @@ namespace Tests.POM.Base
         public List<string> GetAllTexts(By elementsLocator)
         {
             return GetElements(elementsLocator).Select(element => element.Text).ToList();
+        }
+
+        public List<string> GetAllValues(By elementsLocator)
+        {
+            return GetElements(elementsLocator).Select(element => element.GetAttribute("value")).ToList();
         }
 
         public List<string>? GetAllTextsWithoutWait(By elementsLocator)
