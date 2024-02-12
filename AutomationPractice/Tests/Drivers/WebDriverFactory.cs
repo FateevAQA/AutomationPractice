@@ -1,7 +1,11 @@
 ﻿using BoDi;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
+
+[assembly: Parallelizable(ParallelScope.Fixtures)]
+[assembly: LevelOfParallelism(6)]
 
 namespace Tests.Drivers
 {
@@ -22,11 +26,8 @@ namespace Tests.Drivers
             var _chromeOptions = new ChromeOptions();
             _chromeOptions.AddArguments(new[] {
                 "--start-maximized",
-                "--ignore-certificate-errors",
-                "--disable-popup-blocking",
-                "--no-sandbox",
-             // "--headless",
-                "--disable-dev-shm-usage" });
+                "--headless",
+                 });
 
             _driver = new ChromeDriver(_chromeOptions);
             _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
